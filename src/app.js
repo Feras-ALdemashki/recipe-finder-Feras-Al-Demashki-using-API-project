@@ -1,2 +1,2 @@
 import { initWelcomePage } from "./pages/welcomePage.js";
-window.addEventListener('load',initWelcomePage)
+window.addEventListener("load", initWelcomePage);
