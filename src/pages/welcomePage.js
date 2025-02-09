@@ -7,7 +7,6 @@ import { initMainPage } from "./mainPage.js";
     const userInterFaceDiv = document.getElementById(USER_INTERFACE_ID)
     userInterFaceDiv.innerHTML=''
     const WelcomeElement = createWelcomeElement();
-    console.log(WelcomeElement)
     userInterFaceDiv.appendChild(WelcomeElement)
     const startButton = document.getElementById(START_BTN_ID);
     startButton.addEventListener('click', initMainPage)
