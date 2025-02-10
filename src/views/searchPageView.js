@@ -1,10 +1,12 @@
-import { START_BTN_ID } from "../constants.js";
-export const createWelcomeElement = () => {
-  const welcomeElement = document.createElement("div");
-  welcomeElement.classList.add("welcome-div");
-  welcomeElement.innerHTML = String.raw`
-  <h1 class = "welcome-text">find the recipe for your main ingredient here</h1>
-  <button id=${START_BTN_ID}>start</button>
-  `;
-  return welcomeElement;
+import { INGREDIENTS_INPUT_ID } from "../constants.js";
+import { SEARCH_BTN_ID } from "../constants.js";
+export const createSearchElement = () => {
+  const element = document.createElement("div");
+  element.classList.add("search-div");
+  element.innerHTML = String.raw`
+     <h1> please enter the ingredient you are looking for</h1>
+    <input type="text" id ="${INGREDIENTS_INPUT_ID}" placeholder="Type here">
+    <button id="${SEARCH_BTN_ID}">Search</button>
+    `;
+  return element;
 };
