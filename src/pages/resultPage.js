@@ -6,7 +6,6 @@ import { MEALS_DATA_URL } from "../constants.js";
 export const initResultsPage = async () => {
   const ingredient = localStorage.getItem("searchedIngredient");
   const apiUrl = `${ingredients_DATA_URL}${ingredient}`;
-
   try {
     const data = await fetchData(apiUrl);
     const mealsDiv = document.getElementById(RESULT_DIV_ID);
@@ -16,7 +15,6 @@ export const initResultsPage = async () => {
       mealsDiv.innerHTML = "<p>No meals found for this ingredient.</p>";
       return;
     }
-
     data.meals.forEach((meal) => {
       const card = document.createElement("div");
       card.classList.add("meal-card");
@@ -26,6 +24,10 @@ export const initResultsPage = async () => {
 
       const mealID = meal.idMeal;
       const showDetails = async () => {
+        const existingPopUp = document.querySelector(".pop-up");
+        if (existingPopUp) {
+          existingPopUp.remove();
+        }
         const mealUrl = `${MEALS_DATA_URL}${mealID}`;
         const mealData = await fetchData(mealUrl);
         const mealInstruction = mealData.meals[0].strInstructions;
@@ -34,17 +36,17 @@ export const initResultsPage = async () => {
         const popUpDiv = document.createElement("div");
         popUpDiv.classList.add("pop-up");
         const popUp = document.createElement("div");
-        popUpDiv.innerHTML = "";
-        popUp.classList.add("pop-up");
+        popUp.innerHTML = "";
         popUp.innerHTML = String.raw`
         <h1>${mealName}</h1>
     <p>${mealInstruction}<hr>Watch video: <a href=${mealYoutubeLink} target="_blank">Youtube </a></p>
     <button id="closePopUpBtn" class="close-pop-up-btn">close</button>
        `;
-        document.body.appendChild(popUpDiv);
         popUpDiv.appendChild(popUp);
-        document
-          .getElementById("closePopUpBtn")
+        document.body.appendChild(popUpDiv);
+
+        popUp
+          .querySelector(".close-pop-up-btn")
           .addEventListener("click", () => {
             popUpDiv.remove();
           });
