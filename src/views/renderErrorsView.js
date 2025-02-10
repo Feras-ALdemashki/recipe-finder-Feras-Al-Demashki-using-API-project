@@ -1,6 +1,6 @@
 import { USER_INTERFACE_ID } from "../constants.js";
 import { RESULT_DIV_ID } from "../constants.js";
-
+// if there is something wrong with fetching data
 export const renderErrors = (err) => {
   const resultDiv = document.getElementById(RESULT_DIV_ID);
   resultDiv.innerHTML = "";

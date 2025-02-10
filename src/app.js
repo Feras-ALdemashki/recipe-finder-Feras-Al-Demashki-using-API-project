@@ -1,2 +1,2 @@
-import { initWelcomePage } from "./pages/searchPage.js";
-window.addEventListener("load", initWelcomePage);
+import { initStartPage } from "./pages/startPage.js";
+window.addEventListener("load", initStartPage);
