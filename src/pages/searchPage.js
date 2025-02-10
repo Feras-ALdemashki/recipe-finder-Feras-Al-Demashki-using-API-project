@@ -1,6 +1,6 @@
 import { START_BTN_ID } from "../constants.js";
 import { USER_INTERFACE_ID } from "../constants.js";
-import { createWelcomeElement } from "../views/welcomePageView.js";
+import { createWelcomeElement } from "../views/searchPageView.js";
 import { initMainPage } from "./mainPage.js";
 
 export const initWelcomePage = () => {
