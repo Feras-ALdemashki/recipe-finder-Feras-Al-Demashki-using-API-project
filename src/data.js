@@ -1,3 +1,5 @@
+import { renderErrors } from "./views/renderErrorsView.js";
+
 export const fetchData = async (url) => {
   try {
     const response = await fetch(url);
@@ -7,8 +9,8 @@ export const fetchData = async (url) => {
       const dataJson = await response.json();
       return dataJson;
     }
-  } catch (error) {
-    console.log(error);
-    throw error;
+  } catch (err) {
+    renderErrors(err);
+    console.log(err);
   }
 };

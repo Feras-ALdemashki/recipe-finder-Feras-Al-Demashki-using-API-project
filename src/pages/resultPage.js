@@ -2,6 +2,7 @@ import { fetchData } from "../data.js";
 import { ingredients_DATA_URL } from "../constants.js";
 import { RESULT_DIV_ID } from "../constants.js";
 import { MEALS_DATA_URL } from "../constants.js";
+import { noMAtchFound } from "../views/noMatchFoundView.js";
 
 export const initResultsPage = async () => {
   const ingredient = localStorage.getItem("searchedIngredient");
@@ -12,7 +13,8 @@ export const initResultsPage = async () => {
     mealsDiv.innerHTML = "";
 
     if (!data.meals) {
-      mealsDiv.innerHTML = "<p>No meals found for this ingredient.</p>";
+      const noMAtch = noMAtchFound();
+      mealsDiv.appendChild(noMAtch);
       return;
     }
     data.meals.forEach((meal) => {
@@ -36,7 +38,6 @@ export const initResultsPage = async () => {
         const popUpDiv = document.createElement("div");
         popUpDiv.classList.add("pop-up");
         const popUp = document.createElement("div");
-        popUp.innerHTML = "";
         popUp.innerHTML = String.raw`
         <h1>${mealName}</h1>
     <p>${mealInstruction}<hr>Watch video: <a href=${mealYoutubeLink} target="_blank">Youtube </a></p>
