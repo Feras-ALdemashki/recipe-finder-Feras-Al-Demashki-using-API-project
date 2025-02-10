@@ -30,6 +30,9 @@ export const initResultsPage = async () => {
     const mealID = meal.idMeal;
     // render meal details and description when the user click on card
     const showDetails = async () => {
+      // add class to blur the background
+      const mainDiv = document.querySelector(".main-div");
+      mainDiv.classList.add("blurred");
       // remove the old div when the user click on another card
       const existingPopUp = document.querySelector(".pop-up");
       if (existingPopUp) {
@@ -47,7 +50,7 @@ export const initResultsPage = async () => {
       const popUp = document.createElement("div");
       popUp.innerHTML = String.raw`
         <h1>${mealName}</h1>
-    <p>${mealInstruction}<hr>Watch video: <a href=${mealYoutubeLink} target="_blank">Youtube </a></p>
+    <p>${mealInstruction}<hr>Click the link  to watch the video tutorial: <a href=${mealYoutubeLink} target="_blank">${mealName} </a></p>
     <button id="closePopUpBtn" class="close-pop-up-btn">close</button>
        `;
       popUpDiv.appendChild(popUp);
@@ -55,6 +58,7 @@ export const initResultsPage = async () => {
       // close button to remove the meal description div
       popUp.querySelector(".close-pop-up-btn").addEventListener("click", () => {
         popUpDiv.remove();
+        mainDiv.classList.remove("blurred");
       });
     };
     card.addEventListener("click", showDetails);

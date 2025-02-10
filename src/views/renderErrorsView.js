@@ -9,8 +9,8 @@ export const renderErrors = (err) => {
   const element = document.createElement("div");
   element.classList.add("error");
   element.innerHTML = String.raw`
-<h1>oops! something went wrong :${err}
-</h1>
+<h1>We encountered a problem while trying to get your results</h1>
+<p>${err}</p>
 `;
   userInterface.appendChild(element);
 };

@@ -4,9 +4,12 @@ export const createSearchElement = () => {
   const element = document.createElement("div");
   element.classList.add("search-div");
   element.innerHTML = String.raw`
-     <h1> please enter the ingredient you are looking for</h1>
-    <input type="text" id ="${INGREDIENTS_INPUT_ID}" placeholder="Type here">
-    <button id="${SEARCH_BTN_ID}">Search</button>
+    <h1>Enter the ingredient you're looking for</h1>
+    <div class="form-control">
+      <input type="text" id="${INGREDIENTS_INPUT_ID}" class="user-input"  required>
+      <label for="${INGREDIENTS_INPUT_ID}"><span>Ingredient</span></label>
+    </div>
+    <button id="${SEARCH_BTN_ID}" class='search-btn'>Search</button>
     `;
   return element;
 };
