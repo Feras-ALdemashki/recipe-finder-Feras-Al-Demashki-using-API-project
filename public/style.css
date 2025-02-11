@@ -310,6 +310,6 @@ body {
   #result-div {
     grid-template-columns: repeat(1, 1fr);
     margin-left: 60px;
-    margin-right: 30px;
+    margin-right: 60px;
   }
 }
