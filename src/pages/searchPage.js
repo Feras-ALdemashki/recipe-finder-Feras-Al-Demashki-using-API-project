@@ -11,14 +11,21 @@ export const initSearchPage = () => {
   userInterFaceDiv.appendChild(searchElement);
   const ingredientInput = document.getElementById(INGREDIENTS_INPUT_ID);
   const searchButton = document.getElementById(SEARCH_BTN_ID);
-  // store the user input to use it later in fetching data
-  searchButton.addEventListener("click", () => {
+
+  const handleSearch = () => {
     const ingredientValue = ingredientInput.value.trim();
     if (ingredientValue) {
+      // store the user input to use it later in fetching data
       localStorage.setItem("searchedIngredient", ingredientValue);
       initResultsPage();
     } else {
       alert("Please enter an ingredient!");
+    }
+  };
+  searchButton.addEventListener("click", handleSearch);
+  ingredientInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
     }
   });
 };
